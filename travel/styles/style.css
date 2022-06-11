@@ -161,3 +161,73 @@
   line-height: 32px;
   box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
 }
+
+.steps {
+  width: 100%;
+  padding-top: 80px;
+  padding-bottom: 97px;
+}
+
+.steps__container {
+  width: 1177px;
+  margin: auto;
+}
+
+.steps__title {
+  margin-bottom: 40px;
+  font-family: 'Red Hat Text';
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 53px;
+  color: #F2785C;
+  text-align: center;
+}
+
+.steps__wrapper {
+  display: flex;
+}
+
+.steps__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.steps__step:first-child {
+  margin-right: 231px;
+}
+
+.steps__step:nth-child(2) {
+  margin-right: 160px;
+}
+
+.step__icon-holder {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F2785C;
+  border-radius: 16px;
+}
+
+.step__icon_bike {
+  width: 50px;
+}
+
+.step__icon_calendar {
+  width: 52px;
+}
+
+.step__icon_plane {
+  width: 60px;
+}
+
+.step__description {
+  font-family: 'Aleo', serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #0D606F;
+}
