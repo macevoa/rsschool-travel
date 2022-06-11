@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,400;0,700;1,400;1,700&family=Magra:wght@700&family=Red+Hat+Text:wght@500&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="body">
   <header class="header">
     <div class="header__container">
       <figure class="logo__container">
@@ -45,7 +45,7 @@
         <p class="promo__content">Recieve personalized recommendations for countries, hotels, activities and more</p>
         <div class="promo__proposal">
           <p class="proposal__content">What would you like to do?</p>
-          <button class="button button_proposal">Start Planning</button>
+          <button class="button button_long">Start Planning</button>
         </div>
       </div>
     </section>
@@ -72,6 +72,36 @@
             <p class="step__description">We will give you recommendations</p>
           </div>
         </dev>
+      </div>
+    </section>
+    <section class="destinations">
+      <div class="destinations__content">
+        <h2 class="destinations__title">popular destinations</h2>
+        <div class="destinations__slider">
+          <div class="slider__content">
+            <div class="slider__item">
+              <img src="pictures/spain.jpg" alt="spain" class="slider__picture">
+              <p class="slider__capture">spain</p>
+            </div>
+            <div class="slider__item">
+              <img src="pictures/japan.jpg" alt="japan" class="slider__picture">
+              <p class="slider__capture">japan</p>
+            </div>
+            <div class="slider__item">
+              <img src="./pictures/usa.jpg" alt="usa" class="slider__picture">
+              <p class="slider__capture">usa</p>
+            </div>
+          </div>
+          <div class="slider__dots-menu">
+            <div class="slider__dot"></div>
+            <div class="slider__dot slider__dot_active"></div>
+            <div class="slider__dot"></div>
+          </div>
+        </div>
+        <button class="button destinations__button button_long">
+          <img class="button__icon" src="./images/arrow-right.svg" alt="arrow right">
+          <span class="button__capture">Find More</span>
+        </button>
       </div>
     </section>
   </main>
