@@ -1,16 +1,29 @@
 @media (max-width: 390px) {
-  .header {
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .background-layer {
     position: absolute;
-    top: 45px;
-    left: 0px;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .header {
+    left: auto;
+    max-width: 390px;
     width: 100%;
     height: unset;
+    padding-top: 45px;
+    padding-bottom: 176px;
     background-color: unset;
     box-shadow: unset;
+    overflow: hidden;
   }
 
   .header__wrapper {
-    position: relative;
     max-width: 358px;
     width: 100%;
     justify-content: space-between;
@@ -33,7 +46,62 @@
   }
 
   .nav {
-    display: none;
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    right: -165px;
+    width: 165px;
+    height: 250px;
+    margin-right: 0px;
+    padding-top: 0px;
+    background-color: #f2785c;
+    border-radius: 0px 0px 0px 10px;
+    box-shadow: 0px 4px 3px rgba(13, 96, 111, 0.25);
+    transition: right ease-out 0.5s;
+  }
+
+  .nav__list {
+    width: 150px;
+    height: 220px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 44px;
+    padding-left: 44px;
+  }
+
+  .nav__item_desk-hidden {
+    display: block;
+  }
+
+  .nav__close {
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav__close::before,
+  .nav__close::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 2px;
+  }
+
+  .nav__close::before {
+    transform: rotate(45deg);
+  }
+
+  .nav__close::after {
+    transform: rotate(-45deg);
   }
 
   .login-button {
@@ -114,7 +182,7 @@
   }
 
   .button_long {
-    width: 92px;
+    max-width: 92px;
     height: 30px;
     font-size: 11px;
     line-height: 15px;

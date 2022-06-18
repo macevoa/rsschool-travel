@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travel Portal</title>
     <link rel="stylesheet" href="./src/styles/style.css" />
+    <link rel="stylesheet" href="./src/styles/tablet.css">
     <link rel="stylesheet" href="./src/styles/mobile.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,7 +45,14 @@
             <li class="nav__item">
               <a href="#stories" class="nav__link">Travel Stories</a>
             </li>
+            <li class="nav__item nav__item_desk-hidden">
+              <a href="#" class="nav__link">Account</a>
+            </li>
+            <li class="nav__item nav__item_desk-hidden">
+              <a href="#socials" class="nav__link">Social Media</a>
+            </li>
           </ul>
+          <div class="nav__close"></div>
         </nav>
         <button class="button login-button">Login</button>
         <div class="burger-menu">
@@ -270,7 +278,7 @@
         </div>
       </section>
     </main>
-    <footer class="footer">
+    <footer id="socials" class="footer">
       <div class="footer__wrapper">
         <ul class="course">
           <li class="course__item">
