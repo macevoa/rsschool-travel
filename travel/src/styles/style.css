@@ -535,7 +535,7 @@ html {
   transition: transform 0.5s;
 }
 
-.socials__link,
+.socials__link:hover,
 .course__link:hover {
   transform: scale(1.1);
 }
