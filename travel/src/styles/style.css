@@ -22,7 +22,6 @@ html {
 
 .body {
   position: relative;
-  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -133,13 +132,15 @@ html {
 }
 
 .main {
-  max-width: 1440px;
   width: 100%;
   margin: auto;
+  overflow: hidden;
 }
 
 .preview {
+  max-width: 1440px;
   width: 100%;
+  margin: auto;
   padding-top: 122px;
   padding-bottom: 254px;
   background-image: url("../../assets/pictures/preview/background.jpg");
@@ -198,7 +199,9 @@ html {
 }
 
 .steps {
+  max-width: 1440px;
   width: 100%;
+  margin: auto;
   padding-top: 80px;
   padding-bottom: 97px;
 }
@@ -361,6 +364,9 @@ html {
 }
 
 .stories {
+  max-width: 1440px;
+  width: 100%;
+  margin: auto;
   padding-bottom: 61px;
   background-image: url("../../assets/pictures/stories/background.png");
   background-position: 0px 93px;
