@@ -78,11 +78,8 @@
     left: 0px;
   }
 
-  .main {
-    max-width: 390px;
-  }
-
   .preview {
+    max-width: 390px;
     padding-top: 142px;
     padding-bottom: 61px;
     background-image: linear-gradient(180deg, #0d606f 0%, rgba(13, 96, 111, 0) 25.1%),
@@ -124,6 +121,7 @@
   }
 
   .steps {
+    max-width: 390px;
     padding-top: 20px;
     padding-bottom: 20px;
   }
@@ -327,6 +325,7 @@
   }
 
   .stories {
+    max-width: 390px;
     padding-bottom: 65px;
     background-image: url("../../assets/pictures/mobile/stories/background.jpg");
     background-position: 0px 29px;
