@@ -1,0 +1,413 @@
+@media (max-width: 390px) {
+  .header {
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    width: 100%;
+    height: unset;
+    background-color: unset;
+    box-shadow: unset;
+  }
+
+  .header__wrapper {
+    position: relative;
+    max-width: 358px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: unset;
+  }
+
+  .logo__container {
+    width: auto;
+    margin: unset;
+    display: block;
+  }
+
+  .logo {
+    margin: 0px;
+  }
+
+  .logo__title {
+    display: none;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .login-button {
+    display: none;
+  }
+
+  .burger-menu {
+    position: relative;
+    width: 26px;
+    height: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 9px;
+  }
+
+  .burger-menu__line {
+    width: 26px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 2px;
+  }
+
+  .burger-menu__line::before,
+  .burger-menu__line::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 26px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 2px;
+  }
+
+  .burger-menu__line::before {
+    top: 0px;
+    left: 0px;
+  }
+
+  .burger-menu__line::after {
+    bottom: 0px;
+    left: 0px;
+  }
+
+  .main {
+    max-width: 390px;
+  }
+
+  .preview {
+    padding-top: 142px;
+    padding-bottom: 61px;
+    background-image: linear-gradient(180deg, #0d606f 0%, rgba(13, 96, 111, 0) 25.1%),
+      url("../../assets/pictures/mobile/preview/background.jpg");
+  }
+
+  .preview__wrapper {
+    max-width: 360px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .preview__title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    visibility: hidden;
+  }
+
+  .preview__content {
+    display: none;
+  }
+
+  .preview__proposal {
+    padding: 9px 9px 9px 16px;
+  }
+
+  .proposal__content {
+    padding-top: 7px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .button_long {
+    width: 92px;
+    height: 30px;
+    font-size: 11px;
+    line-height: 15px;
+  }
+
+  .steps {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .steps__wrapper {
+    max-width: 360px;
+  }
+
+  .h2 {
+    font-size: 14px;
+    line-height: 19px;
+  }
+
+  .steps__title {
+    margin-bottom: 20px;
+  }
+
+  .steps__container {
+    justify-content: space-between;
+    margin: 0px;
+  }
+
+  .steps__step:first-child {
+    margin-right: 0px;
+    align-items: flex-start;
+  }
+
+  .steps__step:nth-child(2) {
+    margin-right: 0px;
+  }
+
+  .steps__step:nth-child(3) {
+    align-items: flex-end;
+  }
+
+  .step__icon-holder {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 19px;
+  }
+
+  .step__icon_bike,
+  .step__icon_calendar {
+    width: 35px;
+  }
+
+  .step__icon_plane {
+    width: 40px;
+  }
+
+  .step__description {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .steps__step:first-child .step__description {
+    width: 81px;
+    text-align: left;
+  }
+
+  .steps__step:nth-child(2) .step__description {
+    width: 112px;
+    text-align: center;
+  }
+
+  .steps__step:nth-child(3) .step__description {
+    width: 81px;
+    text-align: end;
+  }
+
+  .destinations__wrapper {
+    margin-bottom: 20px;
+  }
+
+  .destinations__slider {
+    position: relative;
+    max-width: 360px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .destinations__title {
+    margin-bottom: 20px;
+  }
+
+  .slider__container {
+    margin: 0px;
+  }
+
+  .slider__item {
+    max-width: 360px;
+    max-height: 210px;
+    margin: 0px;
+  }
+
+  .slider__item:nth-child(2),
+  .slider__item:nth-child(3) {
+    display: none;
+  }
+
+  .slider__item:not(:last-child) {
+    margin: 0px;
+  }
+
+  .slider__picture {
+    max-width: 360px;
+    width: 100%;
+    max-height: 210px;
+    height: auto;
+  }
+
+  .slider__capture {
+    position: absolute;
+    top: 8px;
+    left: 15px;
+    font-family: "Red Hat Text";
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+
+  .slider__dots-menu {
+    position: absolute;
+    left: calc(50% - 18px);
+    bottom: 12px;
+    width: 36px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .slider__dot {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(242, 120, 92, 0.5);
+    border-radius: 50%;
+  }
+
+  .slider__dot_active {
+    order: -1;
+    background-color: #f2785c;
+  }
+
+  .slider__arrows {
+    display: block;
+    bottom: 0px;
+  }
+
+  .slider__arrow {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slider__prev {
+    top: 90px;
+    left: 5px;
+  }
+
+  .slider__next {
+    top: 90px;
+    right: 5px;
+  }
+
+  .slider__controls {
+    width: 15px;
+    height: 26px;
+  }
+
+  .slider__controls .path {
+    fill: rgba(242, 120, 92, 0.5);
+  }
+
+  .slider__controls_active .path {
+    fill: #f2785c;
+  }
+
+  .slider__prev {
+    transform: rotate(180deg);
+  }
+
+  .button_with-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button_with-icon .button__icon {
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+  }
+
+  .button_with-icon .button__capture {
+    font-size: 11px;
+    line-height: 15px;
+  }
+
+  .stories {
+    padding-bottom: 65px;
+    background-image: url("../../assets/pictures/mobile/stories/background.jpg");
+    background-position: 0px 29px;
+  }
+
+  .stories__wrapper {
+    padding-bottom: 13px;
+    background-position: center 29px;
+  }
+
+  .stories__title {
+    margin-bottom: 10px;
+  }
+
+  .stories__container {
+    margin-bottom: 10px;
+    padding-top: 10px;
+  }
+
+  .stories__story:not(:last-child) {
+    margin-bottom: 15px;
+  }
+
+  .story__picture {
+    max-width: 155px;
+    max-height: 130px;
+    margin-right: 10px;
+  }
+
+  .story__image {
+    max-width: 155px;
+    max-height: 130px;
+  }
+
+  .story__container {
+    max-width: 195px;
+    padding-top: 5px;
+  }
+
+  .story__title {
+    margin-bottom: 10px;
+    font-size: 11px;
+    line-height: 13px;
+    font-weight: 700;
+  }
+
+  .story__content {
+    max-height: 88px;
+    font-size: 9px;
+    line-height: 11px;
+    overflow: hidden;
+  }
+
+  .story__more {
+    font-size: 9px;
+    line-height: 11px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 65px;
+    padding-top: 15px;
+  }
+
+  .footer__wrapper {
+    position: relative;
+    max-width: 390px;
+    justify-content: center;
+  }
+
+  .course {
+    margin-right: 19px;
+  }
+
+  .rights {
+    display: none;
+  }
+
+  .socials {
+    margin-left: 0px;
+  }
+}
