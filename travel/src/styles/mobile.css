@@ -5,12 +5,6 @@
     align-items: center;
   }
 
-  .background-layer {
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-  }
-
   .header {
     left: auto;
     max-width: 390px;
@@ -47,7 +41,7 @@
 
   .nav {
     position: absolute;
-    z-index: 2;
+    z-index: 10;
     top: 0px;
     right: -165px;
     width: 165px;

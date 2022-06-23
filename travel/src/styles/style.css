@@ -20,13 +20,235 @@ html {
   background-color: #575a5e;
 }
 
+.button {
+  font-family: 'Red Hat Text', sans-serif;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #0d606f;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.button:hover {
+  background-color: #062e35;
+}
+
+.button:active {
+  background-color: #00a8c2;
+}
+
 .body {
   position: relative;
   scroll-behavior: smooth;
 }
 
+.background-layer {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+}
+
+.popup {
+  position: absolute;
+  z-index: 1000;
+  left: calc(50% - 325px);
+  width: 650px;
+  height: 660px;
+  padding: 25px 45px 23px;
+  font-family: 'Aleo', serif;
+  font-weight: 700;
+  background-image: linear-gradient(177.09deg, #ffffff 6.15%, #0d606f 202.69%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  transition: all 0.5s;
+}
+
+.popup__title {
+  margin-bottom: 30px;
+  font-size: 32px;
+  line-height: 38px;
+  color: #0d606f;
+  text-align: center;
+}
+
+.popup__button {
+  width: 560px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+}
+
+.signin-btn__facebook {
+  margin-bottom: 20px;
+  color: #ffffff;
+  background-color: #1877f2;
+}
+
+.signin-btn__google {
+  margin-bottom: 30px;
+  color: #0d606f;
+  background-color: #ffffff;
+}
+
+.signin-btn__google:hover {
+  color: #ffffff;
+}
+
+.signin-btn__icon {
+  margin-right: 15px;
+}
+
+.popup__text-separator {
+  max-width: 560px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 20px;
+  line-height: 24px;
+  color: rgba(13, 96, 111, 0.5);
+}
+
+.popup__text-separator::before,
+.popup__text-separator::after {
+  content: '';
+  width: 261px;
+  height: 1px;
+  display: block;
+  background-color: rgba(13, 96, 111, 0.5);
+}
+
+.popup__signin-form {
+  margin-bottom: 10px;
+}
+
+.form__email-wrapper,
+.form__password-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__email-wrapper {
+  margin-bottom: 20px;
+}
+
+.form__password-wrapper {
+  margin-bottom: 25px;
+}
+
+.form__label {
+  margin-bottom: 5px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0d606f;
+}
+
+.form__input {
+  max-width: 560px;
+  width: 100%;
+  height: 54px;
+  padding: 0px 10px;
+  font-family: 'Red Hat Text', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  color: #0d606f;
+  background-color: #ffffff;
+  box-shadow: inset 0px 0px 3px rgba(13, 96, 111, 0.08), inset 0px 2px 3px rgba(13, 96, 111, 0.16);
+  border: none;
+  border-radius: 10px;
+}
+
+.form__button {
+  height: 54px;
+}
+
+.popup__password-reset {
+  display: block;
+  margin-bottom: 25px;
+  font-size: 15px;
+  line-height: 18px;
+  text-decoration-line: underline;
+  color: #0d606f;
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.5s;
+}
+
+.popup__password-reset:hover {
+  color: #062e35;
+}
+
+.popup__password-reset:active {
+  color: #00a8c2;
+}
+
+.popup__empty-separator {
+  max-width: 560px;
+  width: 100%;
+  height: 1px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: rgba(13, 96, 111, 0.5);
+}
+
+.popup__signup-proposal {
+  display: flex;
+  justify-content: center;
+}
+
+.signup-proposal__content {
+  margin-right: 5px;
+  font-size: 15px;
+  line-height: 18px;
+  color: rgba(13, 96, 111, 0.5);
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
+}
+
+.signup-proposal__link {
+  font-size: 15px;
+  line-height: 18px;
+  text-decoration-line: underline;
+  color: #0d606f;
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
+  cursor: pointer;
+  transition: color 0.5s;
+}
+
+.signup-proposal__link:hover {
+  color: #062e35;
+}
+
+.signup-proposal__link:active {
+  color: #00a8c2;
+}
+
+.popup.reg {
+  height: 632px;
+}
+
+.popup.reg .popup__password-reset {
+  display: none;
+}
+
+.popup.reg .popup__signin-form {
+  margin-bottom: 25px;
+}
+
 .header {
   position: absolute;
+  z-index: 10;
   top: 0px;
   left: 0px;
   width: 100%;
@@ -62,7 +284,7 @@ html {
 
 .logo__title {
   width: 180px;
-  font-family: "Magra", sans-serif;
+  font-family: 'Magra', sans-serif;
   font-size: 32px;
   line-height: 39px;
   font-weight: 700;
@@ -84,7 +306,7 @@ html {
 }
 
 .nav__link {
-  font-family: "Red Hat Text", sans-serif;
+  font-family: 'Red Hat Text', sans-serif;
   font-size: 16px;
   line-height: 21px;
   font-weight: 500;
@@ -97,7 +319,7 @@ html {
 }
 
 .nav__link::after {
-  content: "";
+  content: '';
   display: block;
   width: 0%;
   height: 1px;
@@ -111,25 +333,6 @@ html {
 
 .nav__close {
   display: none;
-}
-
-.button {
-  font-family: "Red Hat Text", sans-serif;
-  font-weight: 500;
-  color: #ffffff;
-  background-color: #0d606f;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.5s;
-}
-
-.button:hover {
-  background-color: #062e35;
-}
-
-.button:active {
-  background-color: #00a8c2;
 }
 
 .login-button {
@@ -156,7 +359,7 @@ html {
   margin: auto;
   padding-top: 122px;
   padding-bottom: 254px;
-  background-image: url("../../assets/pictures/preview/background.jpg");
+  background-image: url('../../assets/pictures/preview/background.jpg');
 }
 
 .preview__wrapper {
@@ -167,7 +370,7 @@ html {
 
 .preview__title {
   margin-bottom: 32px;
-  font-family: "Aleo", serif;
+  font-family: 'Aleo', serif;
   font-weight: 700;
   font-size: 80px;
   line-height: 96px;
@@ -176,7 +379,7 @@ html {
 
 .preview__content {
   margin-bottom: 46px;
-  font-family: "Aleo", serif;
+  font-family: 'Aleo', serif;
   font-style: italic;
   font-weight: 700;
   font-size: 20px;
@@ -195,7 +398,7 @@ html {
 
 .proposal__content {
   padding-top: 12px;
-  font-family: "Aleo", serif;
+  font-family: 'Aleo', serif;
   font-style: italic;
   font-weight: 400;
   font-size: 24px;
@@ -227,7 +430,7 @@ html {
 }
 
 .h2 {
-  font-family: "Red Hat Text";
+  font-family: 'Red Hat Text';
   font-weight: 500;
   font-size: 40px;
   line-height: 53px;
@@ -283,7 +486,7 @@ html {
 }
 
 .step__description {
-  font-family: "Aleo", serif;
+  font-family: 'Aleo', serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
@@ -335,7 +538,7 @@ html {
   position: absolute;
   bottom: 40px;
   left: 15px;
-  font-family: "Red Hat Text";
+  font-family: 'Red Hat Text';
   font-weight: 500;
   font-size: 32px;
   line-height: 42px;
@@ -386,7 +589,7 @@ html {
   width: 100%;
   margin: auto;
   padding-bottom: 61px;
-  background-image: url("../../assets/pictures/stories/background.png");
+  background-image: url('../../assets/pictures/stories/background.png');
   background-position: 0px 93px;
   background-repeat: no-repeat;
 }
@@ -434,7 +637,7 @@ html {
   max-width: 760px;
   width: 100%;
   padding-top: 1px;
-  font-family: "Aleo", serif;
+  font-family: 'Aleo', serif;
   color: #0d606f;
 }
 
@@ -496,17 +699,17 @@ html {
 .course__github {
   width: 35px;
   height: 34px;
-  background-image: url("../../assets/images/socials/github.svg");
+  background-image: url('../../assets/images/socials/github.svg');
 }
 
 .course__rsschool {
   width: 92px;
   height: 34px;
-  background-image: url("../../assets/images/socials/rs_school_js.svg");
+  background-image: url('../../assets/images/socials/rs_school_js.svg');
 }
 
 .rights {
-  font-family: "Red Hat Text";
+  font-family: 'Red Hat Text';
   font-weight: 500;
   font-size: 16px;
   line-height: 21px;
@@ -535,15 +738,15 @@ html {
 }
 
 .socials__instagram {
-  background-image: url("../../assets/images/socials/instagram.svg");
+  background-image: url('../../assets/images/socials/instagram.svg');
 }
 
 .socials__youtube {
-  background-image: url("../../assets/images/socials/video.svg");
+  background-image: url('../../assets/images/socials/video.svg');
 }
 
 .socials__twitter {
-  background-image: url("../../assets/images/socials/twitter.svg");
+  background-image: url('../../assets/images/socials/twitter.svg');
 }
 
 .socials__link,

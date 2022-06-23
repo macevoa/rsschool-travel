@@ -3,12 +3,160 @@ console.log(
 );
 
 function pageInit() {
+  createLoginButtonClickListener();
   createBurgerClickListener();
   createNavClickListener();
 }
 
+function createLoginButtonClickListener() {
+  document.querySelector('.login-button').addEventListener('click', showPopup);
+}
+
+function showPopup() {
+  const popup = getPopup();
+  document.body.prepend(popup);
+  setPopupTopGap();
+  createBackgroundLayer(closePopup);
+  scrollToTop();
+  createRegisterEventListener();
+}
+
+function getPopup() {
+  return createPopup();
+}
+
+function createPopup() {
+  const popup = createCustomElement('div', 'popup');
+  const popupWrapper = createCustomElement('div', 'popup__wrapper');
+  const popupTitle = createCustomElement('p', 'popup__title', 'Log in to your account');
+
+  const buttonFacebook = createCustomElement(
+    'button',
+    ['button', 'popup__button', 'popup__signin-btn', 'signin-btn__facebook']
+  );
+  const facebookIcon = createCustomElement('img', 'signin-btn__icon');
+  facebookIcon.src = './assets/images/login/facebook.svg';
+  facebookIcon.alt = 'facebook';
+  const facebookContent = createCustomElement('span', 'signin-btn__content', 'Sign In with Facebook');
+  buttonFacebook.append(facebookIcon, facebookContent);
+
+  const buttonGoogle = createCustomElement(
+    'button',
+    ['button', 'popup__button', 'popup__signin-btn', 'signin-btn__google']
+  );
+  const googleIcon = createCustomElement('img', 'signin-btn__icon');
+  googleIcon.src = './assets/images/login/google.svg';
+  googleIcon.alt = 'google';
+  const googleContent = createCustomElement('span', 'signin-btn__content', 'Sign In with Google');
+  buttonGoogle.append(googleIcon, googleContent);
+
+  const textSeparator = createCustomElement('p', 'popup__text-separator', 'or');
+
+  const popupForm = createCustomElement('form', 'popup__signin-form');
+  popupForm.action = '';
+
+  const emailWrapper = createCustomElement('div', 'form__email-wrapper');
+  const [emailLabel, emailInput] = createCustomInput('form__label', 'E-mail', 'email', 'form__input');
+  emailWrapper.append(emailLabel, emailInput);
+
+  const passwordWrapper = createCustomElement('div', 'form__password-wrapper');
+  const [passwordLabel, passwordInput] = createCustomInput('form__label', 'Password', 'password', 'form__input');
+  passwordWrapper.append(passwordLabel, passwordInput);
+
+  const signinButton = createCustomElement(
+    'button',
+    ['button', 'popup__button', 'form__button', 'popup__form-btn'],
+    'Sign In',
+  );
+  popupForm.append(emailWrapper, passwordWrapper, signinButton);
+
+  const resetPassword = createCustomElement('p', 'popup__password-reset', 'Forgot Your Password?');
+  const emptySeparator = createCustomElement('div', 'popup__empty-separator');
+
+  const signupProposalWrapper = createCustomElement('div', 'popup__signup-proposal');
+  const signupProposalContent = createCustomElement('p', 'signup-proposal__content', 'Don’t have an account?');
+  const signupProposalLink = createCustomElement('p', 'signup-proposal__link', 'Register');
+  signupProposalWrapper.append(signupProposalContent, signupProposalLink);
+
+  popupWrapper.append(
+    popupTitle,
+    buttonFacebook,
+    buttonGoogle,
+    textSeparator,
+    popupForm,
+    resetPassword,
+    emptySeparator,
+    signupProposalWrapper,
+  );
+  popup.append(popupWrapper);
+  return popup;
+}
+
+function closePopup() {
+  removePopup();
+  removeBackgroundLayer();
+}
+
+function removePopup() {
+  const popup = document.querySelector('.popup');
+  popup.remove();
+}
+
+function createRegisterEventListener() {
+  const register = document.querySelector('.popup__signup-proposal');
+  register.addEventListener('click', changePopupContent);
+}
+
+function setPopupTopGap() {
+  const popup = document.querySelector('.popup');
+  popup.style.top = `${(document.documentElement.clientHeight / 2) - (popup.offsetHeight / 2)}px`;
+}
+
+function changePopupContent() {
+  const popup = document.querySelector('.popup');
+  popup.classList.toggle('reg');
+
+  const title = document.querySelector('.popup__title');
+  const facebookBtn = document.querySelector('.signin-btn__facebook .signin-btn__content');
+  const googleBtn = document.querySelector('.signin-btn__google .signin-btn__content');
+  const formBtn = document.querySelector('.popup__form-btn');
+  const propContent = document.querySelector('.signup-proposal__content');
+  const propLink = document.querySelector('.signup-proposal__link');
+
+  if (Array.from(popup.classList).includes('reg')) {
+    title.textContent = 'Register a new account';
+    facebookBtn.textContent = 'Sign Up with Facebook';
+    googleBtn.textContent = 'Sign Up with Google';
+    formBtn.textContent = 'Sign Up';
+    propContent.textContent = 'Already have an account?';
+    propLink.textContent = 'Log in';
+  } else {
+    title.textContent = 'Log in to your account';
+    facebookBtn.textContent = 'Sign In with Facebook';
+    googleBtn.textContent = 'Sign In with Google';
+    formBtn.textContent = 'Sign In';
+    propContent.textContent = 'Don’t have an account?';
+    propLink.textContent = 'Register';
+  }
+}
+
 function createBurgerClickListener() {
   document.querySelector('.burger-menu').addEventListener('click', showMobileNavigation);
+}
+
+function showMobileNavigation() {
+  const nav = document.querySelector('.nav');
+  nav.style.right = '0px';
+  createBackgroundLayer(closeMobileNavigation);
+  createNavCloseEventListener();
+}
+
+function createNavCloseEventListener() {
+  document.querySelector('.nav__close').addEventListener('click', closeMobileNavigation);
+}
+
+function removeNavCloseEventListener() {
+  document.querySelector('.nav__close').removeEventListener('click', closeMobileNavigation);
 }
 
 function createNavClickListener() {
@@ -22,19 +170,60 @@ function navClickHandler(ev) {
   }
 }
 
-function showMobileNavigation() {
+function closeMobileNavigation() {
   const nav = document.querySelector('.nav');
-  nav.style.right = '0px';
-  createBackgroundLayer();
-  createNavCloseEventListener();
+  nav.style.right = '-165px';
+  removeNavCloseEventListener();
+  removeBackgroundLayer();
 }
 
-function createBackgroundLayer() {
+function createBackgroundLayer(func) {
   const layer = document.createElement('div');
   layer.classList.add('background-layer');
   layer.style.height = `${calcPageHeight()}px`;
-  layer.addEventListener('click', closeMobileNavigation);
+  layer.addEventListener('click', func);
   document.body.prepend(layer);
+  blockPageScrolling();
+}
+
+function removeBackgroundLayer() {
+  const layer = document.querySelector('.background-layer');
+  layer.remove();
+  unblockPageScrolling();
+}
+
+function scrollToTop() {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function blockPageScrolling() {
+  document.body.style.overflow = 'hidden';
+}
+
+function unblockPageScrolling() {
+  document.body.style.overflow = 'auto';
+}
+
+function createCustomElement(tag, classList, content = '') {
+  const element = document.createElement(tag);
+  if (typeof classList === 'string') {
+    element.classList.add(classList);
+  } else {
+    Array.from(classList).map((x) => element.classList.add(x));
+  }
+  element.textContent = content;
+  return element;
+}
+
+function createCustomInput(labelClass, labelText, labelID, inputClass) {
+  const label = createCustomElement('label', labelClass, labelText);
+  label.for = labelID;
+  const input = createCustomElement('input', inputClass);
+  input.id = labelID;
+  input.type = labelID;
+  input.name = labelID;
+  input.required = 'true';
+  return [label, input];
 }
 
 function calcPageHeight() {
@@ -46,26 +235,6 @@ function calcPageHeight() {
     document.body.clientHeight,
     document.documentElement.clientHeight,
   );
-}
-
-function createNavCloseEventListener() {
-  document.querySelector('.nav__close').addEventListener('click', closeMobileNavigation);
-}
-
-function closeMobileNavigation() {
-  const nav = document.querySelector('.nav');
-  nav.style.right = '-165px';
-  removeNavCloseEventListener();
-  removeBackgroundLayer();
-}
-
-function removeBackgroundLayer() {
-  const layer = document.querySelector('.background-layer');
-  layer.remove();
-}
-
-function removeNavCloseEventListener() {
-  document.querySelector('.nav__close').removeEventListener('click', closeMobileNavigation);
 }
 
 pageInit();
