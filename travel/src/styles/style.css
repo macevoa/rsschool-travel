@@ -512,9 +512,12 @@ html {
 }
 
 .slider__container {
+  position: relative;
+  left: 0px;
   margin-bottom: 24px;
   display: flex;
   justify-content: center;
+  transition: all 0.2s ease-in-out;
 }
 
 .slider__item {
@@ -561,9 +564,10 @@ html {
   height: 20px;
   background-color: rgba(242, 120, 92, 0.5);
   border-radius: 50%;
+  transition: all 0.2s ease;
 }
 
-.slider__dot_active {
+.slider__dot.active {
   background-color: #f2785c;
 }
 

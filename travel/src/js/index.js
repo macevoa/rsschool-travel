@@ -6,6 +6,7 @@ function pageInit() {
   createLoginButtonClickListener();
   createBurgerClickListener();
   createNavClickListener();
+  createSliderClickListener();
 }
 
 function createLoginButtonClickListener() {
@@ -235,6 +236,66 @@ function calcPageHeight() {
     document.body.clientHeight,
     document.documentElement.clientHeight,
   );
+}
+
+function createSliderClickListener() {
+  const sliderItems = document.querySelectorAll('.slider__item');
+  Array.from(sliderItems).map((x) => x.addEventListener('click', sliderItemClickHandler));
+}
+
+function sliderItemClickHandler(e) {
+  const container = document.querySelector('.slider__container');
+  const clickedItem = e.currentTarget;
+  const activeItem = document.querySelector('.slider__item.active');
+  const gap = container.offsetLeft;
+
+  if (activeItem.previousElementSibling === clickedItem) {
+    function changeItems() {
+      container.removeEventListener('transitionend', changeItems);
+      container.lastElementChild.remove();
+      container.prepend(element);
+      container.style.transition = 'unset';
+      container.style.left = `${-800 - 60 - gap}px`;
+
+      setTimeout(() => {
+        container.style.transition = '';
+        container.style.left = '0px';
+      activeItem.classList.remove('active');
+      clickedItem.classList.add('active');
+      }, 10);
+    }
+
+    const element = container.lastElementChild.cloneNode(true);
+    element.addEventListener('click', sliderItemClickHandler);
+    container.addEventListener('transitionend', changeItems);
+    container.style.left = `${-gap}px`;
+  } else if (activeItem.nextElementSibling === clickedItem) {
+    function changeItems() {
+      container.removeEventListener('transitionend', changeItems);
+      container.firstElementChild.remove();
+      container.append(element);
+      container.style.transition = 'unset';
+      container.style.left = `${800 + 60 + gap}px`;
+
+      setTimeout(() => {
+        container.style.transition = '';
+        container.style.left = '0px';
+        activeItem.classList.remove('active');
+        clickedItem.classList.add('active');
+      }, 10);
+    }
+
+    const element = container.firstElementChild.cloneNode(true);
+    element.addEventListener('click', sliderItemClickHandler);
+    container.addEventListener('transitionend', changeItems);
+    container.style.left = `${gap}px`;
+  }
+
+  const activeDot = document.querySelector('.slider__dot.active');
+  activeDot.classList.remove('active');
+
+  const clickedDot = document.querySelector(`[data-dot="${clickedItem.dataset.item}"]`);
+  clickedDot.classList.add('active');
 }
 
 pageInit();
