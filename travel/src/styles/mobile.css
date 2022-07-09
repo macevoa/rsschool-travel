@@ -1,16 +1,13 @@
 @media (max-width: 390px) {
   .body {
-    position: relative;
-    top: -251px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
   .header {
-    position: relative;
-    top: 251px;
-    z-index: unset;
+    position: absolute;
+    z-index: 10;
     max-width: 390px;
     width: 100%;
     height: unset;
@@ -45,61 +42,9 @@
 
   .nav {
     position: absolute;
-    z-index: 1000;
-    top: 0px;
-    right: -165px;
-    width: 165px;
-    height: 250px;
-    margin-right: 0px;
-    padding-top: 0px;
-    background-color: #f2785c;
-    border-radius: 0px 0px 0px 10px;
-    box-shadow: 0px 4px 3px rgba(13, 96, 111, 0.25);
-    transition: right ease-out 0.5s;
-  }
-
-  .nav__list {
-    width: 150px;
-    height: 220px;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-top: 44px;
-    padding-left: 44px;
-  }
-
-  .nav__item_desk-hidden {
-    display: block;
-  }
-
-  .nav__close {
-    display: block;
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .nav__close::before,
-  .nav__close::after {
-    content: '';
-    position: absolute;
-    display: block;
-    width: 20px;
-    height: 2px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 2px;
-  }
-
-  .nav__close::before {
-    transform: rotate(45deg);
-  }
-
-  .nav__close::after {
-    transform: rotate(-45deg);
+    width: 1px;
+    height: 1px;
+    visibility: hidden;
   }
 
   .login-button {
@@ -125,7 +70,7 @@
 
   .burger-menu__line::before,
   .burger-menu__line::after {
-    content: "";
+    content: '';
     position: absolute;
     display: block;
     width: 26px;
@@ -144,12 +89,69 @@
     left: 0px;
   }
 
+  .burger-nav {
+    display: block;
+    position: absolute;
+    z-index: 1000;
+    top: 0px;
+    right: 0px;
+    width: 0px;
+    height: 250px;
+    margin-right: 0px;
+    padding-top: 0px;
+    background-color: #f2785c;
+    border-radius: 0px 0px 0px 10px;
+    box-shadow: 0px 4px 3px rgba(13, 96, 111, 0.25);
+    transition: width ease-out 0.5s;
+    overflow: hidden;
+  }
+
+  .burger-nav__list {
+    width: 150px;
+    height: 220px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 44px;
+    padding-left: 44px;
+  }
+
+  .burger-nav__close {
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .burger-nav__close::before,
+  .burger-nav__close::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 2px;
+  }
+
+  .burger-nav__close::before {
+    transform: rotate(45deg);
+  }
+
+  .burger-nav__close::after {
+    transform: rotate(-45deg);
+  }
+
   .preview {
     max-width: 390px;
     padding-top: 142px;
     padding-bottom: 61px;
     background-image: linear-gradient(180deg, #0d606f 0%, rgba(13, 96, 111, 0) 25.1%),
-      url("../../assets/pictures/mobile/preview/background.jpg");
+      url('../../assets/pictures/mobile/preview/background.jpg');
   }
 
   .preview__wrapper {
@@ -303,7 +305,7 @@
     position: absolute;
     top: 8px;
     left: 15px;
-    font-family: "Red Hat Text";
+    font-family: 'Red Hat Text';
     font-weight: 500;
     font-size: 20px;
     line-height: 26px;
@@ -396,7 +398,7 @@
   .stories {
     max-width: 390px;
     padding-bottom: 65px;
-    background-image: url("../../assets/pictures/mobile/stories/background.jpg");
+    background-image: url('../../assets/pictures/mobile/stories/background.jpg');
     background-position: 0px 29px;
   }
 

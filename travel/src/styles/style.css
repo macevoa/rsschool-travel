@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-html {
+.document {
   scroll-behavior: smooth;
 }
 
@@ -21,7 +21,7 @@ html {
 }
 
 .button {
-  font-family: "Red Hat Text", sans-serif;
+  font-family: 'Red Hat Text', sans-serif;
   font-weight: 500;
   color: #ffffff;
   background-color: #0d606f;
@@ -89,7 +89,7 @@ html {
 
 .logo__title {
   width: 180px;
-  font-family: "Magra", sans-serif;
+  font-family: 'Magra', sans-serif;
   font-size: 32px;
   line-height: 39px;
   font-weight: 700;
@@ -104,14 +104,16 @@ html {
   padding-top: 10px;
 }
 
-.nav__list {
+.nav__list,
+.burger-nav__list {
   display: flex;
   justify-content: space-between;
   list-style: none;
 }
 
-.nav__link {
-  font-family: "Red Hat Text", sans-serif;
+.nav__link,
+.burger-nav__link {
+  font-family: 'Red Hat Text', sans-serif;
   font-size: 16px;
   line-height: 21px;
   font-weight: 500;
@@ -119,12 +121,9 @@ html {
   text-decoration: none;
 }
 
-.nav__item_desk-hidden {
-  display: none;
-}
-
-.nav__link::after {
-  content: "";
+.nav__link::after,
+.burger-nav__link::after {
+  content: '';
   display: block;
   width: 0%;
   height: 1px;
@@ -132,12 +131,9 @@ html {
   transition: width 0.5s;
 }
 
-.nav__link:hover::after {
+.nav__link:hover::after,
+.burger-nav__link:hover::after {
   width: 100%;
-}
-
-.nav__close {
-  display: none;
 }
 
 .login-button {
@@ -149,6 +145,10 @@ html {
 }
 
 .burger-menu {
+  display: none;
+}
+
+.burger-nav {
   display: none;
 }
 
@@ -164,7 +164,7 @@ html {
   margin: auto;
   padding-top: 122px;
   padding-bottom: 254px;
-  background-image: url("../../assets/pictures/preview/background.jpg");
+  background-image: url('../../assets/pictures/preview/background.jpg');
 }
 
 .preview__wrapper {
@@ -175,7 +175,7 @@ html {
 
 .preview__title {
   margin-bottom: 32px;
-  font-family: "Aleo", serif;
+  font-family: 'Aleo', serif;
   font-weight: 700;
   font-size: 80px;
   line-height: 96px;
@@ -184,7 +184,7 @@ html {
 
 .preview__content {
   margin-bottom: 46px;
-  font-family: "Aleo", serif;
+  font-family: 'Aleo', serif;
   font-style: italic;
   font-weight: 700;
   font-size: 20px;
@@ -203,7 +203,7 @@ html {
 
 .proposal__content {
   padding-top: 12px;
-  font-family: "Aleo", serif;
+  font-family: 'Aleo', serif;
   font-style: italic;
   font-weight: 400;
   font-size: 24px;
@@ -235,7 +235,7 @@ html {
 }
 
 .h2 {
-  font-family: "Red Hat Text";
+  font-family: 'Red Hat Text';
   font-weight: 500;
   font-size: 40px;
   line-height: 53px;
@@ -291,7 +291,7 @@ html {
 }
 
 .step__description {
-  font-family: "Aleo", serif;
+  font-family: 'Aleo', serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
@@ -343,7 +343,7 @@ html {
   position: absolute;
   bottom: 40px;
   left: 15px;
-  font-family: "Red Hat Text";
+  font-family: 'Red Hat Text';
   font-weight: 500;
   font-size: 32px;
   line-height: 42px;
@@ -394,7 +394,7 @@ html {
   width: 100%;
   margin: auto;
   padding-bottom: 61px;
-  background-image: url("../../assets/pictures/stories/background.png");
+  background-image: url('../../assets/pictures/stories/background.png');
   background-position: 0px 93px;
   background-repeat: no-repeat;
 }
@@ -441,7 +441,7 @@ html {
   max-width: 760px;
   width: 100%;
   padding-top: 1px;
-  font-family: "Aleo", serif;
+  font-family: 'Aleo', serif;
   color: #0d606f;
 }
 
@@ -503,17 +503,17 @@ html {
 .course__github {
   width: 35px;
   height: 34px;
-  background-image: url("../../assets/images/socials/github.svg");
+  background-image: url('../../assets/images/socials/github.svg');
 }
 
 .course__rsschool {
   width: 92px;
   height: 34px;
-  background-image: url("../../assets/images/socials/rs_school_js.svg");
+  background-image: url('../../assets/images/socials/rs_school_js.svg');
 }
 
 .rights {
-  font-family: "Red Hat Text";
+  font-family: 'Red Hat Text';
   font-weight: 500;
   font-size: 16px;
   line-height: 21px;
@@ -542,15 +542,15 @@ html {
 }
 
 .socials__instagram {
-  background-image: url("../../assets/images/socials/instagram.svg");
+  background-image: url('../../assets/images/socials/instagram.svg');
 }
 
 .socials__youtube {
-  background-image: url("../../assets/images/socials/video.svg");
+  background-image: url('../../assets/images/socials/video.svg');
 }
 
 .socials__twitter {
-  background-image: url("../../assets/images/socials/twitter.svg");
+  background-image: url('../../assets/images/socials/twitter.svg');
 }
 
 .socials__link,
