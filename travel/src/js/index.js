@@ -1,12 +1,18 @@
+window.addEventListener('load', pageInit);
+
 console.log(
-  '1. Вёрстка валидная +10\n2. Вёрстка семантическая +20\n   В коде странице присутствуют следующие элементы (указано минимальное количество, может быть больше):\n   - <header>, <main>, <footer> +3\n   - четыре элемента <section> (по количеству секций) +3\n   - только один заголовок <h1> +3\n   - три заголовка <h2> (количество секций минус одна, у которой заголовок <h1>) +3\n   - один элемент <nav> (панель навигации) +3\n   - два списка ul > li > a (панель навигации, ссылки на соцсети) +3\n   - четыре кнопки <button> +2\n3. Вёрстка соответствует макету +48\n   - блок <header> +6\n   - секция preview +9\n   - секция steps +9\n   - секция destinations +9\n   - секция stories +9\n   - блок <footer> +6 \n4. Требования к css + 12\n   - для построения сетки используются флексы или гриды +2\n   - при уменьшении масштаба страницы браузера вёрстка размещается по центру, а не сдвигается в сторону +2\n   - фоновый цвет тянется на всю ширину страницы +2\n   - иконки добавлены в формате .svg. SVG может быть добавлен любым способом. Обращаем внимание на формат, а не на способ добавления +2\n   - изображения добавлены в формате .jpg +2\n   - есть favicon +2\n5. Интерактивность, реализуемая через css +20\n   - плавная прокрутка по якорям +5\n   - ссылки в футере ведут на гитхаб автора проекта и на страницу курса https://rs.school/js-stage0/ +5\n   - интерактивность включает в себя не только изменение внешнего вида курсора, например, при помощи свойства cursor: pointer, но и другие визуальные эффекты, например, изменение цвета фона или цвета шрифта. Если в макете указаны стили при наведении и клике, для элемента указываем эти стили. Если в макете стили не указаны, реализуете их по своему усмотрению, руководствуясь общим стилем макета +5\n   - обязательное требование к интерактивности: плавное изменение внешнего вида элемента при наведении и клике не влияющее на соседние элементы +5\nTotal: 110 / 110 pts.',
+  '1. Слайдер изображений в секции `destinations` +50\n   - на десктоп варианте при клике на урезанную картинку слева или справа изображение меняется по принципу карусели(например если нажать правую картинку та что была в центре на уезжает налево, а та что была видна наполовину оказывается справа) + 20\n   - Три точки внизу отображают "номер слайда", то есть каждому слайду соответствует свой кружочек, который становится активным при нахождении соответствующего ему слайда в центре. На мобильном варианте картинка одна, но поверх нее появляются стрелочки навигации (можно сделать как карусель или же затемнять кнопку если слайдер достиг края) +20\n   - Анимации плавного перемещения для слайдера +10\n2. Нажатие на кнопку Login (кнопка Account в мобильной версии) показывает сверстанный логин попап + 50\n   - логин попап соответствует верстке его закрытие происходит при клике вне попапа +25\n   - логин попап имеет 2 инпута (логин и пароль) при нажатии на кнопку Sign In показывается браузерный алерт с введенными данными (для реализации можно использовать тег <form>) +25\n3. Нажатие на кнопку Register на Login попапе меняет разметку попапа на разметку Sign Up попапа согласно макету (То есть нажатие не закрывает модал а просто меняет его наполнение). +25',
 );
 
 function pageInit() {
   createLoginButtonClickListener();
   createBurgerClickListener();
   createNavClickListener();
-  createSliderClickListener();
+  focusSliderOnActiveItem();
+  createSliderItemClickListener();
+  documentWidthChangeListener();
+  createSliderDotsClickListener();
+  createSliderArrowsClickListener();
 }
 
 function createLoginButtonClickListener() {
@@ -31,20 +37,24 @@ function createPopup() {
   const popupWrapper = createCustomElement('div', 'popup__wrapper');
   const popupTitle = createCustomElement('p', 'popup__title', 'Log in to your account');
 
-  const buttonFacebook = createCustomElement(
+  const buttonFacebook = createCustomElement('button', [
     'button',
-    ['button', 'popup__button', 'popup__signin-btn', 'signin-btn__facebook']
-  );
+    'popup__button',
+    'popup__signin-btn',
+    'signin-btn__facebook',
+  ]);
   const facebookIcon = createCustomElement('img', 'signin-btn__icon');
   facebookIcon.src = './assets/images/login/facebook.svg';
   facebookIcon.alt = 'facebook';
   const facebookContent = createCustomElement('span', 'signin-btn__content', 'Sign In with Facebook');
   buttonFacebook.append(facebookIcon, facebookContent);
 
-  const buttonGoogle = createCustomElement(
+  const buttonGoogle = createCustomElement('button', [
     'button',
-    ['button', 'popup__button', 'popup__signin-btn', 'signin-btn__google']
-  );
+    'popup__button',
+    'popup__signin-btn',
+    'signin-btn__google',
+  ]);
   const googleIcon = createCustomElement('img', 'signin-btn__icon');
   googleIcon.src = './assets/images/login/google.svg';
   googleIcon.alt = 'google';
@@ -110,7 +120,7 @@ function createRegisterEventListener() {
 
 function setPopupTopGap() {
   const popup = document.querySelector('.popup');
-  popup.style.top = `${(document.documentElement.clientHeight / 2) - (popup.offsetHeight / 2)}px`;
+  popup.style.top = `${document.documentElement.clientHeight / 2 - popup.offsetHeight / 2}px`;
 }
 
 function changePopupContent() {
@@ -146,36 +156,42 @@ function createBurgerClickListener() {
 }
 
 function showMobileNavigation() {
-  const nav = document.querySelector('.nav');
-  nav.style.right = '0px';
+  const nav = document.querySelector('.burger-nav');
+  nav.style.width = '165px';
   createBackgroundLayer(closeMobileNavigation);
+  scrollToTop();
+  blockPageScrolling();
   createNavCloseEventListener();
 }
 
 function createNavCloseEventListener() {
-  document.querySelector('.nav__close').addEventListener('click', closeMobileNavigation);
+  document.querySelector('.burger-nav__close').addEventListener('click', closeMobileNavigation);
 }
 
 function removeNavCloseEventListener() {
-  document.querySelector('.nav__close').removeEventListener('click', closeMobileNavigation);
+  document.querySelector('.burger-nav__close').removeEventListener('click', closeMobileNavigation);
 }
 
 function createNavClickListener() {
-  const nav = document.querySelector('.nav');
+  const nav = document.querySelector('.burger-nav');
   nav.addEventListener('click', navClickHandler);
 }
 
-function navClickHandler(ev) {
-  if (Array.from(ev.target.classList).includes('nav__link')) {
+function navClickHandler(event) {
+  if (Array.from(event.target.classList).includes('burger-nav__link')) {
     closeMobileNavigation();
+    if (Array.from(event.target.classList).includes('login')) {
+      showPopup();
+    }
   }
 }
 
 function closeMobileNavigation() {
-  const nav = document.querySelector('.nav');
-  nav.style.right = '-165px';
+  const nav = document.querySelector('.burger-nav');
+  nav.style.width = '0px';
   removeNavCloseEventListener();
   removeBackgroundLayer();
+  unblockPageScrolling();
 }
 
 function createBackgroundLayer(func) {
@@ -194,7 +210,7 @@ function removeBackgroundLayer() {
 }
 
 function scrollToTop() {
-  window.scrollTo({top: 0, behavior: 'smooth'});
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function blockPageScrolling() {
@@ -238,7 +254,19 @@ function calcPageHeight() {
   );
 }
 
-function createSliderClickListener() {
+function focusSliderOnActiveItem() {
+  const container = document.querySelector('.slider__container');
+  const activeItem = document.querySelector('.slider__item.active');
+  const itemWidth = parseInt(activeItem.clientWidth);
+  const itemMargin = parseInt(getComputedStyle(activeItem).marginRight);
+  const documentWidth = document.documentElement.clientWidth;
+  const sliderItemsCount = container.children.length;
+  const sliderWidth = sliderItemsCount * itemWidth + (sliderItemsCount - 1) * itemMargin;
+  const leftGap = (sliderWidth - documentWidth) / 2;
+  container.style.left = `-${leftGap}px`;
+}
+
+function createSliderItemClickListener() {
   const sliderItems = document.querySelectorAll('.slider__item');
   Array.from(sliderItems).map((x) => x.addEventListener('click', sliderItemClickHandler));
 }
@@ -247,55 +275,111 @@ function sliderItemClickHandler(e) {
   const container = document.querySelector('.slider__container');
   const clickedItem = e.currentTarget;
   const activeItem = document.querySelector('.slider__item.active');
-  const gap = container.offsetLeft;
+  const itemWidth = parseInt(activeItem.clientWidth);
+  const itemMargin = parseInt(getComputedStyle(activeItem).marginRight);
 
-  if (activeItem.previousElementSibling === clickedItem) {
-    function changeItems() {
-      container.removeEventListener('transitionend', changeItems);
-      container.lastElementChild.remove();
+  if (!Array.from(container.classList).includes('blocked')) {
+    if (activeItem.previousElementSibling === clickedItem) {
+      container.classList.toggle('blocked');
+      toggleSliderArrowsBlock();
+
+      const element = container.lastElementChild.cloneNode(true);
+      element.addEventListener('click', sliderItemClickHandler);
+
+      container.style.transition = 'unset';
       container.prepend(element);
-      container.style.transition = 'unset';
-      container.style.left = `${-800 - 60 - gap}px`;
+      container.style.right = `${-parseInt(container.style.left) + (itemWidth + itemMargin)}px`;
+      container.style.left = 'unset';
 
       setTimeout(() => {
         container.style.transition = '';
-        container.style.left = '0px';
-      activeItem.classList.remove('active');
-      clickedItem.classList.add('active');
-      }, 10);
-    }
+        container.style.right = `${parseInt(container.style.right) - (itemWidth + itemMargin)}px`;
+      }, 100);
 
-    const element = container.lastElementChild.cloneNode(true);
-    element.addEventListener('click', sliderItemClickHandler);
-    container.addEventListener('transitionend', changeItems);
-    container.style.left = `${-gap}px`;
-  } else if (activeItem.nextElementSibling === clickedItem) {
-    function changeItems() {
-      container.removeEventListener('transitionend', changeItems);
-      container.firstElementChild.remove();
+      setTimeout(() => {
+        container.style.transition = 'unset';
+        container.lastElementChild.remove();
+        container.style.left = `${-parseInt(container.style.right)}px`;
+        container.style.right = 'unset';
+        container.classList.toggle('blocked');
+        toggleSliderArrowsBlock();
+      }, 500);
+    } else if (activeItem.nextElementSibling === clickedItem) {
+      container.classList.toggle('blocked');
+      toggleSliderArrowsBlock();
+
+      const element = container.firstElementChild.cloneNode(true);
+      element.addEventListener('click', sliderItemClickHandler);
+
+      container.style.transition = 'unset';
       container.append(element);
-      container.style.transition = 'unset';
-      container.style.left = `${800 + 60 + gap}px`;
 
       setTimeout(() => {
         container.style.transition = '';
-        container.style.left = '0px';
-        activeItem.classList.remove('active');
-        clickedItem.classList.add('active');
-      }, 10);
+        container.style.left = `${parseInt(container.style.left) - (itemWidth + itemMargin)}px`;
+      }, 100);
+
+      setTimeout(() => {
+        container.style.transition = 'unset';
+        container.firstElementChild.remove();
+        container.style.left = `${parseInt(container.style.left) + (itemWidth + itemMargin)}px`;
+        container.classList.toggle('blocked');
+        toggleSliderArrowsBlock();
+      }, 500);
     }
 
-    const element = container.firstElementChild.cloneNode(true);
-    element.addEventListener('click', sliderItemClickHandler);
-    container.addEventListener('transitionend', changeItems);
-    container.style.left = `${gap}px`;
+    activeItem.classList.remove('active');
+    clickedItem.classList.add('active');
+
+    const activeDot = document.querySelector('.slider__dot.active');
+    activeDot.classList.remove('active');
+
+    const clickedDot = document.querySelector(`[data-dot="${clickedItem.dataset.item}"]`);
+    clickedDot.classList.add('active');
   }
-
-  const activeDot = document.querySelector('.slider__dot.active');
-  activeDot.classList.remove('active');
-
-  const clickedDot = document.querySelector(`[data-dot="${clickedItem.dataset.item}"]`);
-  clickedDot.classList.add('active');
 }
 
-pageInit();
+function createSliderDotsClickListener() {
+  const sliderDots = document.querySelector('.slider__dots-menu');
+  sliderDots.addEventListener('click', sliderDotsClickHandler);
+}
+
+function sliderDotsClickHandler(event) {
+  if (Array.from(event.target.classList).includes('slider__dot')) {
+    const clickedDot = event.target;
+    const itemNumber = `${clickedDot.dataset.dot}`;
+    const linkedItem = document.querySelector(`[data-item="${itemNumber}"`);
+    linkedItem.click();
+  }
+}
+
+function createSliderArrowsClickListener() {
+  const sliderArrows = document.querySelector('.slider__arrows');
+  sliderArrows.addEventListener('click', sliderArrowsClickHandler);
+}
+
+function sliderArrowsClickHandler(event) {
+  if (event.target.closest('.slider__arrow')) {
+    const clickedArrow = event.target.closest('.slider__arrow');
+    if (Array.from(clickedArrow.classList).includes('slider__prev')) {
+      document.querySelector('.slider__item.active').previousElementSibling.click();
+    } else if (Array.from(clickedArrow.classList).includes('slider__next')) {
+      document.querySelector('.slider__item.active').nextElementSibling.click();
+    }
+  }
+}
+
+function toggleSliderArrowsBlock() {
+  Array.from(document.querySelectorAll('.slider__controls')).map((x) => {
+    x.classList.toggle('slider__controls_active');
+  });
+}
+
+function documentWidthChangeListener() {
+  window.addEventListener('resize', () => {
+    setTimeout(focusSliderOnActiveItem, 500);
+    if (document.querySelector('.popup')) {
+      setTimeout(setPopupTopGap, 500);
+    }
+  });
+}

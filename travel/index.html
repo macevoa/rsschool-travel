@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="zxx" class="document">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travel Portal</title>
     <link rel="stylesheet" href="./src/styles/style.css" />
-    <link rel="stylesheet" href="./src/styles/tablet.css">
+    <link rel="stylesheet" href="./src/styles/tablet.css" />
     <link rel="stylesheet" href="./src/styles/mobile.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,12 +45,6 @@
             <li class="nav__item">
               <a href="#stories" class="nav__link">Travel Stories</a>
             </li>
-            <li class="nav__item nav__item_desk-hidden">
-              <a href="#" class="nav__link">Account</a>
-            </li>
-            <li class="nav__item nav__item_desk-hidden">
-              <a href="#socials" class="nav__link">Social Media</a>
-            </li>
           </ul>
           <div class="nav__close"></div>
         </nav>
@@ -60,6 +54,29 @@
         </div>
       </div>
     </header>
+    <div class="burger-nav">
+      <ul class="burger-nav__list">
+        <li class="burger-nav__item">
+          <a href="#how-it-works" class="burger-nav__link">How It Works</a>
+        </li>
+        <li class="burger-nav__item">
+          <a href="#plan-your-trip" class="burger-nav__link">Plan Your Trip</a>
+        </li>
+        <li class="burger-nav__item">
+          <a href="#destinations" class="burger-nav__link">Destinations</a>
+        </li>
+        <li class="burger-nav__item">
+          <a href="#stories" class="burger-nav__link">Travel Stories</a>
+        </li>
+        <li class="burger-nav__item">
+          <a href="#" class="burger-nav__link login">Account</a>
+        </li>
+        <li class="burger-nav__item">
+          <a href="#socials" class="burger-nav__link">Social Media</a>
+        </li>
+      </ul>
+      <div class="burger-nav__close"></div>
+    </div>
     <main class="main">
       <section id="how-it-works" class="preview">
         <div class="preview__wrapper">
@@ -123,11 +140,17 @@
                 <p class="slider__capture">spain</p>
               </div>
               <div class="slider__item active" data-item="2">
-                <img src="./assets/pictures/slider/japan.jpg" alt="japan" class="slider__picture" />
+                <picture>
+                  <source media="(max-width: 390px)" srcset="./assets/pictures/mobile/slider/japan.jpg" sizes="360px" />
+                  <img src="./assets/pictures/slider/japan.jpg" alt="japan" class="slider__picture" />
+                </picture>
                 <p class="slider__capture">japan</p>
               </div>
               <div class="slider__item" data-item="3">
-                <img src="./assets/pictures/slider/usa.jpg" alt="usa" class="slider__picture" />
+                <picture>
+                  <source media="(max-width: 390px)" srcset="./assets/pictures/mobile/slider/usa.jpg" sizes="360px" />
+                  <img src="./assets/pictures/slider/usa.jpg" alt="usa" class="slider__picture" />
+                </picture>
                 <p class="slider__capture">usa</p>
               </div>
             </div>
@@ -138,7 +161,12 @@
             </div>
             <div class="slider__arrows">
               <div class="slider__arrow slider__prev">
-                <svg class="slider__controls" viewBox="0 0 15 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  class="slider__controls slider__controls_active"
+                  viewBox="0 0 15 26"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     class="path"
                     d="M0.924346 1.0675C0.572838 1.41911 0.375371 1.89594 0.375371 2.39312C0.375371 2.89031 0.572838 3.36713 0.924346 3.71875L10.2056 13L0.924346 22.2813C0.5828 22.6349 0.39381 23.1085 0.398082 23.6001C0.402354 24.0917 0.599546 24.562 0.947186 24.9097C1.29483 25.2573 1.7651 25.4545 2.25672 25.4588C2.74834 25.463 3.22197 25.274 3.5756 24.9325L14.1825 14.3256C14.534 13.974 14.7314 13.4972 14.7314 13C14.7314 12.5028 14.534 12.026 14.1825 11.6744L3.5756 1.0675C3.22398 0.715991 2.74715 0.518524 2.24997 0.518524C1.75279 0.518524 1.27596 0.715991 0.924346 1.0675V1.0675Z"
@@ -302,6 +330,6 @@
         </ul>
       </div>
     </footer>
-    <script src="src/js/index.js"></script>
+    <script src="./src/js/index.js"></script>
   </body>
 </html>
